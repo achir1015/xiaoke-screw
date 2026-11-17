@@ -1,6 +1,6 @@
 // 等最新一次「建置安裝檔」工作流程結束，印出各工作結果（GITHUB_TOKEN 由環境變數提供）。
-const REPO = 'achir1015/xiaoke-tray';
-const headers = { Authorization: `Bearer ${process.env.GITHUB_TOKEN}`, Accept: 'application/vnd.github+json', 'User-Agent': 'xiaoke-tray-ci' };
+const REPO = 'achir1015/xiaoke-screw';
+const headers = { Authorization: `Bearer ${process.env.GITHUB_TOKEN}`, Accept: 'application/vnd.github+json', 'User-Agent': 'xiaoke-screw-ci' };
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const get = async (u) => (await fetch(`https://api.github.com/repos/${REPO}/${u}`, { headers })).json();
 

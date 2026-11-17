@@ -101,7 +101,8 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
-  Menu.setApplicationMenu(null);
+  // Mac 保留最基本的選單（⌘Q 結束、⌘C／⌘V 複製貼上）；Windows 不顯示選單
+  Menu.setApplicationMenu(process.platform === 'darwin' ? Menu.buildFromTemplate([{ role: 'appMenu' }, { role: 'editMenu' }]) : null);
   protocol.handle(SCHEME, async (req) => {
     const url = new URL(req.url);
     let rel = decodeURIComponent(url.pathname).replace(/^\/+/, '') || 'index.html';
@@ -121,7 +122,7 @@ app.whenReady().then(() => {
   ipcMain.handle('bambu:pick', async () => {
     const r = await dialog.showOpenDialog(win, {
       title: '選擇 Bambu Studio 執行檔',
-      defaultPath: 'C:\\Program Files\\Bambu Studio',
+      defaultPath: process.platform === 'darwin' ? '/Applications' : 'C:\\Program Files\\Bambu Studio',
       filters: [{ name: 'Bambu Studio', extensions: process.platform === 'win32' ? ['exe'] : ['app', '*'] }],
       properties: ['openFile'],
     });

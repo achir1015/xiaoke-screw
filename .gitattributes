@@ -3,3 +3,4 @@
 *.ico binary
 *.woff binary
 ios/*.sh text eol=lf
+scripts/*.sh text eol=lf
