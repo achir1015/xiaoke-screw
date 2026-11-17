@@ -1,0 +1,94 @@
+{
+  "name": "xiaoke-screw",
+  "version": "1.0.0",
+  "description": "小柯機器人螺絲3D產生器：參數化螺絲、螺帽、墊圈、螺紋桿、嵌件與支柱，3D 列印用，一鍵送到 Bambu Studio",
+  "scripts": {
+    "test": "vitest run",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "typecheck": "tsc",
+    "app": "vite build && electron .",
+    "electron": "electron .",
+    "dist:win": "tsc && vite build && electron-builder --win nsis portable --x64 --publish never",
+    "dist:mac": "tsc && vite build && electron-builder --mac dmg --publish never",
+    "icon": "python scripts/make_icon.py"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "@types/three": "^0.186.0",
+    "electron": "^33.4.11",
+    "electron-builder": "^25.1.8",
+    "fflate": "^0.8.3",
+    "manifold-3d": "^3.5.5",
+    "three": "^0.186.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.3",
+    "vitest": "^5.0.3"
+  },
+  "engines": {
+    "node": ">=20.19"
+  },
+  "type": "module",
+  "private": true,
+  "productName": "小柯機器人螺絲3D產生器",
+  "main": "electron/main.cjs",
+  "author": {
+    "name": "吳玉柱",
+    "url": "https://github.com/achir1015"
+  },
+  "homepage": "https://github.com/achir1015/xiaoke-screw",
+  "build": {
+    "appId": "com.achir.xiaokescrew",
+    "productName": "小柯機器人螺絲3D產生器",
+    "artifactName": "XiaokeScrew-${version}-${os}-${arch}.${ext}",
+    "copyright": "Copyright © 2026 吳玉柱",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "build/icon.png",
+      "package.json",
+      "LICENSE"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico",
+      "executableName": "XiaokeScrew"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "小柯機器人螺絲3D產生器",
+      "uninstallDisplayName": "小柯機器人螺絲3D產生器",
+      "language": "1028",
+      "installerLanguages": [
+        "zh_TW"
+      ]
+    },
+    "portable": {
+      "artifactName": "XiaokeScrew-${version}-win-x64-portable.${ext}"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "build/icon.png",
+      "category": "public.app-category.graphics-design",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist",
+      "identity": null
+    },
+    "dmg": {
+      "title": "小柯機器人螺絲3D產生器 ${version}"
+    },
+    "npmRebuild": false,
+    "afterSign": "build/adhoc-sign.cjs"
+  }
+}

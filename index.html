@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="小柯機器人螺絲3D產生器：參數化螺絲、螺帽、墊圈、螺紋桿、螺紋嵌件與支柱，公制／英制／梯形／列印大牙，3D 列印用，一鍵送到 Bambu Studio。" />
+    <link rel="icon" href="./favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="小柯螺絲" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <title>小柯機器人螺絲3D產生器</title>
+  </head>
+  <body>
+    <div id="app">
+      <aside class="panel">
+        <header class="top">
+          <img src="./icon-192.png" alt="" width="40" height="40" />
+          <div class="title">
+            <h1>小柯機器人螺絲3D產生器</h1>
+            <p>螺絲・螺帽・墊圈・螺紋桿，做好直接送 Bambu Studio</p>
+          </div>
+          <button type="button" class="ghost icon xk-guide-btn" title="語音教學" aria-label="語音教學"><svg viewBox="0 0 24 24"><rect x="5" y="7" width="14" height="11" rx="5"/><path d="M12 3v4M9.5 12h.01M14.5 12h.01M10 15h4"/></svg></button>
+          <button type="button" class="ghost icon xk-update" title="檢查更新" aria-label="檢查更新"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v3h16v-3"/></svg></button>
+        </header>
+        <div id="scroll">
+          <section class="block">
+            <h2>1. 選擇零件</h2>
+            <div id="kinds" role="radiogroup" aria-label="零件種類"></div>
+          </section>
+          <section class="block">
+            <h2>2. 選擇規格</h2>
+            <select id="preset" aria-label="規格"></select>
+            <p id="preset-note" class="hint"></p>
+          </section>
+          <section class="block">
+            <h2>3. 調整參數</h2>
+            <form id="params" autocomplete="off"></form>
+          </section>
+          <details class="block" id="project">
+            <summary>我的範本與分享</summary>
+            <div class="row">
+              <select id="mine" aria-label="我的範本"><option value="">（選擇已存的範本）</option></select>
+              <button type="button" class="ghost" id="mine-del" title="刪除這個範本">刪除</button>
+            </div>
+            <div class="row">
+              <button type="button" class="ghost" id="mine-save">存成範本</button>
+              <button type="button" class="ghost" id="share">複製分享連結</button>
+              <button type="button" class="ghost" id="reset">恢復預設</button>
+            </div>
+          </details>
+          <p class="credit">開發：吳玉柱 先生 與 Claude AI Opus 5.5 <span id="version"></span></p>
+        </div>
+      </aside>
+      <main>
+        <div id="viewer"></div>
+        <div id="toolbar" role="toolbar">
+          <div class="seg" id="mode">
+            <button type="button" data-mode="assembly" class="on">組合圖</button>
+            <button type="button" data-mode="print">列印排版</button>
+          </div>
+          <button type="button" class="ghost" id="section" aria-pressed="false">剖面</button>
+          <button type="button" class="ghost" id="animate">旋入動畫</button>
+          <button type="button" class="ghost" id="fit">重設視角</button>
+        </div>
+        <div id="info">
+          <div id="status" aria-live="polite">準備中…</div>
+          <div id="facts"></div>
+          <ul id="warn"></ul>
+          <details id="tips">
+            <summary>列印小技巧</summary>
+            <ul>
+              <li><b>方向</b>：螺絲、螺帽、嵌件都直立列印（本工具的「列印排版」已擺好）。</li>
+              <li><b>層高</b>：M6 左右螺距用 0.2 mm 以下，細牙用 0.12 mm 以下。</li>
+              <li><b>強度</b>：牆線 3～4 圈、填充 20～40%（立方體或螺旋體）；PETG、尼龍比 PLA 耐用。</li>
+              <li><b>太緊</b>：把「配合間隙」加大 0.05～0.1 mm，或降低流量、加一點負的 XY 補償。</li>
+              <li><b>太鬆</b>：把間隙調小，或多加牆線。</li>
+              <li><b>牙黏在一起</b>：降低溫度或流量，改用平頂的「列印友善大牙」。</li>
+              <li><b>拉絲</b>：加大回抽、加強冷卻、外牆放慢。</li>
+            </ul>
+          </details>
+        </div>
+        <div id="export">
+          <button type="button" class="ghost" id="dl-stl">下載 STL</button>
+          <button type="button" class="ghost" id="dl-3mf">下載 3MF</button>
+          <button type="button" class="primary" id="send-bambu">送到 Bambu Studio</button>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
