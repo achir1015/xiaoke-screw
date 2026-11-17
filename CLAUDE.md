@@ -33,7 +33,9 @@ python scripts/make_icon.py                     # 圖示
 ## 狀態
 
 - 2026-11-18 Windows v1.0.0 完成：安裝檔 release/、已 /S 安裝到 %LOCALAPPDATA%\Programs\XiaokeScrew（桌面＋開始選單捷徑）、e2e 18 項通過。
-- 尚未：GitHub repo（更新功能指向 achir1015/xiaoke-screw）、Mac、線上版、iPhone／iPad（線上安裝）、Android。做法照抄 xiaoke-tray 的 build.yml／pages.yml／ios／android。
+- 2026-11-18 公開 repo https://github.com/achir1015/xiaoke-screw（main），v1.0.0 Release 手動上傳 win 安裝版＋免安裝版（無 CI）；e2e/update-check.mjs 實測程式內更新讀得到。發佈說明在 .github/release-notes.md。
+- 尚未：Mac、線上版、iPhone／iPad（線上安裝）、Android。做法照抄 xiaoke-tray 的 build.yml／pages.yml／ios／android。
+- 沒有 gh CLI：用 `git credential fill` 取 token 打 GitHub API。
 
 ## 坑
 
