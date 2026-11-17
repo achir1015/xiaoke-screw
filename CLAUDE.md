@@ -34,11 +34,13 @@ python scripts/make_icon.py                     # 圖示
 
 - 2026-11-18 Windows v1.0.0 完成：安裝檔 release/、已 /S 安裝到 %LOCALAPPDATA%\Programs\XiaokeScrew（桌面＋開始選單捷徑）、e2e 18 項通過。
 - 2026-11-18 公開 repo https://github.com/achir1015/xiaoke-screw（main），v1.0.0 Release 手動上傳 win 安裝版＋免安裝版（無 CI）；e2e/update-check.mjs 實測程式內更新讀得到。發佈說明在 .github/release-notes.md。
-- 尚未：Mac、線上版、iPhone／iPad（線上安裝）、Android。做法照抄 xiaoke-tray 的 build.yml／pages.yml／ios／android。
+- 2026-11-18 v1.1.0 Mac 版：`.github/workflows/build.yml` 推 package.json 版本即建 win＋mac-arm64＋mac-x64 並發 Release（notes 在 .github/release-notes.md）；Mac ad-hoc 簽章（build/adhoc-sign.cjs）、保留 appMenu／editMenu。Intel Mac 實機 `scripts/mac-install-test.sh <dmg> --bambu` 18 項通過（測試資料夾 ~/Developer/xiaoke-screw-test）。Windows 程式內更新 1.0.0→1.1.0 實測成功（e2e/update-install.mjs），仍裝在個人資料夾。等 CI：`GITHUB_TOKEN=… node e2e/wait-ci.mjs`。
+- 尚未：線上版、iPhone／iPad（線上安裝）、Android。做法照抄 xiaoke-tray 的 pages.yml／ios／android。
 - 沒有 gh CLI：用 `git credential fill` 取 token 打 GitHub API。
 
 ## 坑
 
 - NSIS 靜默安裝後會自動開啟 App，單一實例會讓 e2e 連不上：先關掉。
 - Bambu Studio 已經開著兩個以上視窗時，新開的實例會卡在「正在載入配置」。
+- Mac 透過 SSH 不能 screencapture（沒有螢幕錄製權限）。
 - 第一次開啟會自動播放教學（?noguide 可略過）；教學結束會還原原本的參數。
