@@ -1,5 +1,10 @@
 # 小柯機器人螺絲3D產生器
 <img width="400" height="261" alt="image" src="https://github.com/user-attachments/assets/b882ae07-e7b8-491c-b5ce-a2a2f1f3ec5d" />
+示範
+
+
+https://github.com/user-attachments/assets/c3ed38b0-5ac6-4180-9170-e1800eaa967e
+
 
 參數化 3D 列印螺絲、螺帽產生器，做好直接送到拓竹 Bambu Studio。
 
