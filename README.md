@@ -5,6 +5,7 @@
 
 - **線上版**（免安裝，瀏覽器直接用，下載 3MF／STL）：https://achir1015.github.io/xiaoke-screw/
 - **桌面版**（Windows／Mac，可一鍵送到 Bambu Studio、程式內更新）：[最新版下載](https://github.com/achir1015/xiaoke-screw/releases/latest)
+- **iPhone／iPad**（線上安裝）：用 Safari 開 https://achir1015.github.io/xiaoke-screw/ios/
 
 - **零件**：螺絲（六角、法蘭、內六角、圓柱、沉頭、圓頭、滾花、四角、多邊形、無頭）、螺帽（六角、法蘭、蓋形、蝶形、滾花、四角、多邊形）、螺絲＋螺帽套組、墊圈、螺紋桿（全牙／雙頭／單邊牙）、螺紋嵌件、支柱。
 - **起子槽**：一字、十字、內六角、梅花。

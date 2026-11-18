@@ -1,6 +1,6 @@
 {
   "name": "xiaoke-screw",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "小柯機器人螺絲3D產生器：參數化螺絲、螺帽、墊圈、螺紋桿、嵌件與支柱，3D 列印用，一鍵送到 Bambu Studio",
   "scripts": {
     "test": "vitest run",

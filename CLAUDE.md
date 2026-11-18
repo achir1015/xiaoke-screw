@@ -36,7 +36,8 @@ python scripts/make_icon.py                     # 圖示
 - 2026-11-18 公開 repo https://github.com/achir1015/xiaoke-screw（main），v1.0.0 Release 手動上傳 win 安裝版＋免安裝版（無 CI）；e2e/update-check.mjs 實測程式內更新讀得到。發佈說明在 .github/release-notes.md。
 - 2026-11-18 v1.1.0 Mac 版：`.github/workflows/build.yml` 推 package.json 版本即建 win＋mac-arm64＋mac-x64 並發 Release（notes 在 .github/release-notes.md）；Mac ad-hoc 簽章（build/adhoc-sign.cjs）、保留 appMenu／editMenu。Intel Mac 實機 `scripts/mac-install-test.sh <dmg> --bambu` 18 項通過（測試資料夾 ~/Developer/xiaoke-screw-test）。Windows 程式內更新 1.0.0→1.1.0 實測成功（e2e/update-install.mjs），仍裝在個人資料夾。等 CI：`GITHUB_TOKEN=… node e2e/wait-ci.mjs`。
 - 2026-11-18 線上版 https://achir1015.github.io/xiaoke-screw/：`.github/workflows/pages.yml` 推 main（src、public、index.html、package.json 等）自動部署（Pages build_type=workflow）；綠鈕改下載 3MF、左下有桌面版連結、更新比 version.json。手機寬度（<820px）版面：標題→預覽→參數。實測 live 站建模＋3MF 下載正常。等部署：`WF=pages.yml node e2e/wait-ci.mjs`。
-- 尚未：iPhone／iPad（線上安裝）、Android。做法照抄 xiaoke-tray 的 ios／android（src/xiaoke.ts 的 iosApp／androidApp 橋接已在）。
+- 2026-11-18 v1.2.0 iPhone／iPad：ios/（XcodeGen，com.achir.xiaokescrew，顯示名「小柯螺絲」，LocalServer 埠 48301）照抄 xiaoke-tray。Mac 上 ~/Developer/xiaoke-screw（從 Windows 用 `tar --force-local` 傳 package.json＋dist＋ios），`osascript ios/run-in-terminal.applescript "bash ~/Developer/xiaoke-screw/ios/build-ipa.sh"`，完成看 ios/build/ipa.done。安裝頁 public/ios/（manifest.plist 的 bundle-version 要跟版本改）；.ipa 手動上傳 Release，檔名固定 xiaoke-screw-ios.ipa。iPhone 15 Pro Max devicectl 安裝＋啟動成功；iPhone 17 Pro Max／iPad Pro 13 模擬器截圖確認（模擬器冷啟動要十幾秒才出畫面）。圖示與 QR 由 scripts/make_icon.py 一起產生。
+- 尚未：Android。做法照抄 xiaoke-tray 的 android/（src/xiaoke.ts 的 androidApp 橋接已在）。
 - 沒有 gh CLI：用 `git credential fill` 取 token 打 GitHub API。
 
 ## 坑

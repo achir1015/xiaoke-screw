@@ -117,4 +117,20 @@ img.resize((512, 512), Image.LANCZOS).save(os.path.join(pub, 'icon-512.png'))
 img.resize((192, 192), Image.LANCZOS).save(os.path.join(pub, 'icon-192.png'))
 img.resize((180, 180), Image.LANCZOS).save(os.path.join(pub, 'apple-touch-icon.png'))
 img.resize((64, 64), Image.LANCZOS).save(os.path.join(pub, 'favicon.png'))
+# iPhone／iPad：App 圖示（不透明，iOS 會自己裁圓角）與線上安裝頁圖示
+full = Image.new('RGBA', (S, S), (26, 58, 110, 255))
+full = Image.alpha_composite(full, img)
+appicon = os.path.join(ROOT, 'ios', 'XiaokeScrew', 'Assets.xcassets', 'AppIcon.appiconset')
+if os.path.isdir(appicon):
+    full.convert('RGB').save(os.path.join(appicon, 'icon-1024.png'))
+pios = os.path.join(pub, 'ios')
+if os.path.isdir(pios):
+    for n in (512, 180, 57):
+        full.convert('RGB').resize((n, n), Image.LANCZOS).save(os.path.join(pios, f'icon-{n}.png'))
+    try:
+        import qrcode
+        qrcode.make('https://achir1015.github.io/xiaoke-screw/ios/', box_size=8, border=2).save(os.path.join(pios, 'qr.png'))
+        print('qr ok')
+    except ImportError:
+        print('沒有 qrcode 套件，QR Code 沒更新')
 print('icon ok')
