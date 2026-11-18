@@ -551,6 +551,15 @@ if (!desktop()) {
     $('.credit').before(a);
   }
 }
+// Android 返回鍵：教學開著就關掉教學，否則交給系統（離開 App）
+(window as unknown as { __xkBack?: () => boolean }).__xkBack = () => {
+  const close = document.querySelector<HTMLButtonElement>('.xk-guide .xk-close');
+  if (close) {
+    close.click();
+    return true;
+  }
+  return false;
+};
 document.documentElement.classList.toggle('touch', matchMedia('(pointer: coarse)').matches);
 
 // 給教學與自動測試用

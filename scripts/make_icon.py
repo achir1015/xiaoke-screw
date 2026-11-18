@@ -133,4 +133,9 @@ if os.path.isdir(pios):
         print('qr ok')
     except ImportError:
         print('沒有 qrcode 套件，QR Code 沒更新')
+# Android 啟動圖示
+for d, n in (('mdpi', 48), ('hdpi', 72), ('xhdpi', 96), ('xxhdpi', 144), ('xxxhdpi', 192)):
+    folder = os.path.join(ROOT, 'android', 'res', f'mipmap-{d}')
+    if os.path.isdir(folder):
+        img.resize((n, n), Image.LANCZOS).save(os.path.join(folder, 'ic_launcher.png'))
 print('icon ok')
