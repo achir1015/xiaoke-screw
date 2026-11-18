@@ -117,10 +117,14 @@ main { position: relative; display: grid; grid-template-rows: 1fr auto auto; min
   #app { grid-template-columns: 1fr; grid-template-rows: auto; height: auto; }
   main { grid-template-rows: 52vh auto auto; order: -1; }
   main #info { max-height: none; }
-  .panel { border-right: 0; }
+  /* 標題列放最上面，接著是 3D 預覽，再來是參數 */
+  .panel { display: contents; }
+  .top { order: -2; background: var(--panel); border-bottom: 1px solid var(--line); }
+  #scroll { background: var(--panel); }
   #scroll { overflow: visible; }
   #export { position: sticky; bottom: 0; }
-  #export button { flex: 1; padding: 10px 6px; }
+  #export button { flex: 1; padding: 10px 6px; font-size: 13px; }
+  #export button.primary { flex: 2; }
   #kinds { grid-template-columns: repeat(4, 1fr); }
   .top { position: static; }
 }
